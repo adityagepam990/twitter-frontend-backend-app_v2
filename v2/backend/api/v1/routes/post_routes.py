@@ -12,7 +12,7 @@ from backend.services.post_service import (
 router = APIRouter()
 
 
-@router.post("/posts", response_model=PostOut, status_code=status.HTTP_201_CREATED)
+@router.post("/api/v1/posts", response_model=PostOut, status_code=status.HTTP_201_CREATED)
 def create_post_route(payload: PostCreate):
     try:
         return create_post(payload.text)
@@ -20,7 +20,7 @@ def create_post_route(payload: PostCreate):
         raise HTTPException(status_code=422, detail=str(error))
 
 
-@router.post("/posts/{post_id}/like", response_model=PostOut)
+@router.post("/api/v1/posts/{post_id}/like", response_model=PostOut)
 def like_post_route(post_id: str):
     try:
         return toggle_like(post_id)
@@ -28,7 +28,7 @@ def like_post_route(post_id: str):
         raise HTTPException(status_code=404, detail=f"Post not found: {post_id}")
 
 
-@router.post("/posts/{post_id}/repost", response_model=PostOut)
+@router.post("/api/v1/posts/{post_id}/repost", response_model=PostOut)
 def repost_post_route(post_id: str):
     try:
         return toggle_repost(post_id)

@@ -6,12 +6,12 @@ from backend.services.user_service import UserNotFoundError, get_suggested_users
 router = APIRouter()
 
 
-@router.get("/users/suggested", response_model=list[UserOut])
+@router.get("/api/v1/users/suggested", response_model=list[UserOut])
 def get_suggested_users_route():
     return get_suggested_users()
 
 
-@router.post("/users/{user_id}/follow", response_model=UserOut)
+@router.post("/api/v1/users/{user_id}/follow", response_model=UserOut)
 def follow_user_route(user_id: str):
     try:
         return toggle_follow(user_id)

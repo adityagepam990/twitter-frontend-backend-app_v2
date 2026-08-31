@@ -6,6 +6,6 @@ from backend.services.trend_service import get_trends
 router = APIRouter()
 
 
-@router.get("/trends", response_model=list[TrendOut])
+@router.get("/api/v1/trends", response_model=list[TrendOut])
 def get_trends_route():
     return get_trends()

@@ -6,7 +6,7 @@ from backend.services.feed_service import InvalidTabError, get_feed
 router = APIRouter()
 
 
-@router.get("/feed", response_model=list[PostOut])
+@router.get("/api/v1/feed", response_model=list[PostOut])
 def get_feed_route(tab: str = "for-you"):
     try:
         return get_feed(tab)
