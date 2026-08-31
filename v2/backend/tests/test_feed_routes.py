@@ -21,8 +21,8 @@ def test_following_tab_returns_only_followed_authors():
 
 def test_feed_is_ordered_newest_first():
     response = client.get("/api/v1/feed", params={"tab": "for-you"})
-    minutes = [post["created_minutes_ago"] for post in response.json()]
-    assert minutes == sorted(minutes)
+    timestamps = [post["created_at"] for post in response.json()]
+    assert timestamps == sorted(timestamps, reverse=True)
 
 
 def test_unknown_tab_is_422():

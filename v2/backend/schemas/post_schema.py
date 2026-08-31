@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel, ConfigDict
 
 
@@ -11,7 +13,7 @@ class PostOut(BaseModel):
     author_avatar_url: str
     author_followed: bool
     body: str
-    created_minutes_ago: int
+    created_at: datetime
     reply_count: int
     repost_count: int
     like_count: int
@@ -19,6 +21,4 @@ class PostOut(BaseModel):
 
 
 class PostCreate(BaseModel):
-    author_id: str
-    body: str
-    image_url: str | None = None
+    text: str

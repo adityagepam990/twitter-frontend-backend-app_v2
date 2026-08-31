@@ -1,9 +1,12 @@
+from datetime import UTC, datetime, timedelta
+
 from backend.models.post_model import Post
 from backend.repositories.seed.user_seed import get_seed_users
 
 
 def get_seed_posts() -> list[Post]:
     authors = {user.id: user for user in get_seed_users()}
+    now = datetime.now(UTC)
 
     def post(post_id, author_id, minutes_ago, body, replies, reposts, likes, image_url=None):
         author = authors[author_id]
@@ -15,7 +18,7 @@ def get_seed_posts() -> list[Post]:
             author_avatar_url=author.avatar_url,
             author_followed=author.followed,
             body=body,
-            created_minutes_ago=minutes_ago,
+            created_at=now - timedelta(minutes=minutes_ago),
             reply_count=replies,
             repost_count=reposts,
             like_count=likes,

@@ -17,4 +17,4 @@ def get_feed(tab: str) -> list[Post]:
     if tab == "following":
         posts = [post for post in posts if post.author_followed]
 
-    return sorted(posts, key=lambda post: post.created_minutes_ago)
+    return sorted(posts, key=lambda post: post.created_at, reverse=True)
