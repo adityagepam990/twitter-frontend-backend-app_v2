@@ -1,0 +1,20 @@
+@use "tokens" as *;
+
+// Only place a raw @media is permitted. All other stylesheets call respond-to().
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media (min-width: $breakpoint-mobile) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" {
+    @media (min-width: $breakpoint-tablet) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: $breakpoint-desktop) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`. Use mobile, tablet, or desktop.";
+  }
+}
