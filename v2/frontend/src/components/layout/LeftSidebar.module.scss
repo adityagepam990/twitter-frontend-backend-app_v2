@@ -1,0 +1,156 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/mixins" as *;
+
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  height: $layout-bottom-nav-height;
+  background: $color-background;
+  border-top: 1px solid $color-border;
+  padding: 0 $space-2;
+  z-index: 10;
+
+  @include respond-to("mobile") {
+    position: static;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    border-top: none;
+    padding: $space-3 0;
+    gap: $space-3;
+  }
+
+  @include respond-to("tablet") {
+    align-items: flex-start;
+    padding: $space-3 $space-4;
+  }
+}
+
+.logo {
+  display: none;
+  color: $color-text-primary;
+
+  @include respond-to("mobile") {
+    display: flex;
+    padding: $space-2;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-around;
+
+  @include respond-to("mobile") {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    gap: $space-1;
+  }
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-2;
+  border: none;
+  background: none;
+  color: $color-text-primary;
+  border-radius: $radius-full;
+  cursor: pointer;
+  font-size: $font-size-lg;
+
+  &:hover {
+    background: $color-surface-hover;
+  }
+}
+
+.active {
+  font-weight: 700;
+}
+
+.navIcon {
+  flex-shrink: 0;
+}
+
+.navLabel {
+  display: none;
+
+  @include respond-to("tablet") {
+    display: inline;
+  }
+}
+
+.postButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: $color-brand-blue;
+  color: $color-background;
+  border: none;
+  border-radius: $radius-full;
+  font-weight: 700;
+  cursor: pointer;
+  width: $post-button-size;
+  height: $post-button-size;
+
+  @include respond-to("mobile") {
+    display: flex;
+  }
+
+  @include respond-to("tablet") {
+    width: 100%;
+    height: auto;
+    padding: $space-3 0;
+  }
+}
+
+.postButtonLabel {
+  display: none;
+
+  @include respond-to("tablet") {
+    display: inline;
+  }
+}
+
+.account {
+  display: none;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2;
+  border-radius: $radius-full;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-surface-hover;
+  }
+
+  @include respond-to("tablet") {
+    display: flex;
+  }
+}
+
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.accountName {
+  color: $color-text-primary;
+  font-weight: 700;
+  font-size: $font-size-sm;
+}
+
+.accountHandle {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+}

@@ -1,0 +1,45 @@
+@use "../../styles/tokens" as *;
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: $layout-center-width * 0.7;
+  margin-top: $space-2;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  background: none;
+  border: none;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-brand-blue;
+  }
+}
+
+.icon {
+  width: $font-size-lg;
+  height: $font-size-lg;
+}
+
+.liked {
+  color: $color-like-red;
+
+  &:hover {
+    color: $color-like-red;
+  }
+}
+
+.reposted {
+  color: $color-repost-green;
+
+  &:hover {
+    color: $color-repost-green;
+  }
+}

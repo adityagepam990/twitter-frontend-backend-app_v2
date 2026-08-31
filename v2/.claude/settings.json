@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(v2/**)",
+      "Grep(v2/**)",
+      "Glob(v2/**)",
+      "Edit(v2/**)",
+      "Write(v2/**)"
+    ],
+    "ask": [
+      "Bash(npm install*)",
+      "Bash(npm ci*)",
+      "Bash(pip install*)",
+      "Bash(pip3 install*)",
+      "Bash(uvicorn*)",
+      "Bash(npm run dev*)",
+      "Bash(git push*)",
+      "Bash(git merge*)",
+      "Bash(git checkout*)",
+      "Bash(git switch*)"
+    ],
+    "deny": [
+      "Edit(!v2/**)",
+      "Write(!v2/**)",
+      "Bash(rm -rf /*)",
+      "Bash(git push --force*)"
+    ]
+  }
+}

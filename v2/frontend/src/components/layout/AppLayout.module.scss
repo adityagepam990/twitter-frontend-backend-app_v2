@@ -1,0 +1,47 @@
+@use "../../styles/tokens" as *;
+@use "../../styles/mixins" as *;
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 100%;
+
+  @include respond-to("mobile") {
+    grid-template-columns: $layout-rail-width minmax(0, 1fr);
+  }
+
+  @include respond-to("tablet") {
+    grid-template-columns: $layout-sidebar-width minmax(0, $layout-center-width);
+    justify-content: center;
+  }
+
+  @include respond-to("desktop") {
+    grid-template-columns: $layout-sidebar-width $layout-center-width $layout-right-width;
+  }
+}
+
+.left {
+  display: none;
+
+  @include respond-to("mobile") {
+    display: block;
+  }
+}
+
+.center {
+  min-width: 0;
+  border-inline: 1px solid $color-border;
+  padding-bottom: $layout-bottom-nav-height;
+
+  @include respond-to("mobile") {
+    padding-bottom: 0;
+  }
+}
+
+.right {
+  display: none;
+
+  @include respond-to("desktop") {
+    display: block;
+  }
+}

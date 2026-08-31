@@ -1,0 +1,31 @@
+@use "../../styles/tokens" as *;
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: $radius-full;
+  background: $color-surface-elevated;
+  color: $color-text-primary;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.sm {
+  width: $space-5;
+  height: $space-5;
+  font-size: $font-size-xs;
+}
+
+.md {
+  width: $space-6;
+  height: $space-6;
+  font-size: $font-size-sm;
+}
+
+.lg {
+  width: $avatar-size-lg;
+  height: $avatar-size-lg;
+  font-size: $font-size-md;
+}

@@ -1,0 +1,19 @@
+@use "../../styles/tokens" as *;
+
+.button {
+  border: none;
+  border-radius: $radius-full;
+  background: $color-text-primary;
+  color: $color-background;
+  font-weight: 700;
+  font-size: $font-size-sm;
+  padding: $space-1 $space-4;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.following {
+  background: none;
+  border: 1px solid $color-border;
+  color: $color-text-primary;
+}
