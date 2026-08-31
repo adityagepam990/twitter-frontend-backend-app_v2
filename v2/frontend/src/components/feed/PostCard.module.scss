@@ -1,0 +1,54 @@
+@use "../../styles/tokens" as *;
+
+.card {
+  display: flex;
+  gap: $space-3;
+  padding: $space-3 $space-4;
+  border-bottom: 1px solid $color-border;
+
+  &:hover {
+    background: $color-surface-hover;
+  }
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: $space-1;
+  flex-wrap: wrap;
+}
+
+.authorName {
+  color: $color-text-primary;
+  font-weight: 700;
+  font-size: $font-size-md;
+}
+
+.authorHandle,
+.dot,
+.timestamp {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+}
+
+.text {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.image {
+  max-width: 100%;
+  border-radius: $radius-lg;
+  border: 1px solid $color-border;
+}

@@ -1,0 +1,38 @@
+@use "../../styles/tokens" as *;
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid $color-border;
+}
+
+.tab {
+  flex: 1;
+  padding: $space-4;
+  background: none;
+  border: none;
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background: $color-surface-hover;
+  }
+}
+
+.active {
+  color: $color-text-primary;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $space-6;
+    height: $space-1;
+    border-radius: $radius-full;
+    background: $color-brand-blue;
+  }
+}

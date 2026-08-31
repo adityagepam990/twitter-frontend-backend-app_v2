@@ -1,0 +1,18 @@
+@use "../../styles/tokens" as *;
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.state {
+  padding: $space-5;
+  text-align: center;
+  color: $color-text-secondary;
+  font-size: $font-size-md;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
