@@ -70,3 +70,45 @@
   background: $color-surface-hover;
   flex-shrink: 0;
 }
+
+.trendRow {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.trendCategory,
+.trendCount {
+  color: $color-text-secondary;
+  font-size: $font-size-xs;
+}
+
+.trendTopic {
+  color: $color-text-primary;
+  font-size: $font-size-md;
+  font-weight: 700;
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: 700;
+}
+
+.userHandle {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+}

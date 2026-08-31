@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import { fetchFeed, type FeedTab } from "../api/feed_api";
 import { createPost, likePost, repostPost } from "../api/post_api";
-import { fetchSuggestedUsers } from "../api/user_api";
+import { fetchSuggestedUsers, followUser } from "../api/user_api";
 import { fetchTrends } from "../api/trend_api";
 import type { ApiError } from "../api/client";
 import type { Post } from "../types/post";
@@ -26,7 +26,9 @@ type FeedAction =
   | { type: "FEED_FAILED"; error: string }
   | { type: "TAB_SET"; tab: FeedTab }
   | { type: "SIDEBAR_LOADED"; suggestedUsers: User[]; trends: Trend[] }
-  | { type: "POST_UPDATED"; post: Post };
+  | { type: "POST_UPDATED"; post: Post }
+  | { type: "POST_CREATED"; post: Post }
+  | { type: "USER_UPDATED"; user: User };
 
 function feedReducer(state: FeedState, action: FeedAction): FeedState {
   switch (action.type) {
@@ -44,6 +46,15 @@ function feedReducer(state: FeedState, action: FeedAction): FeedState {
       return {
         ...state,
         posts: state.posts.map((post) => (post.id === action.post.id ? action.post : post)),
+      };
+    case "POST_CREATED":
+      return { ...state, posts: [action.post, ...state.posts] };
+    case "USER_UPDATED":
+      return {
+        ...state,
+        suggestedUsers: state.suggestedUsers.map((user) =>
+          user.id === action.user.id ? action.user : user,
+        ),
       };
   }
 }
@@ -63,6 +74,7 @@ interface FeedStore extends FeedState {
   toggleLike: (postId: string) => Promise<void>;
   toggleRepost: (postId: string) => Promise<void>;
   loadSidebar: () => Promise<void>;
+  toggleFollow: (userId: string) => Promise<void>;
 }
 
 const initialState: FeedState = {
@@ -95,12 +107,8 @@ export const useFeedStore = create<FeedStore>((set, get) => ({
   },
 
   submitPost: async (text) => {
-    try {
-      await createPost(text);
-      await get().loadFeed(get().tab);
-    } catch (error) {
-      get().dispatch({ type: "FEED_FAILED", error: errorMessage(error) });
-    }
+    const post = await createPost(text);
+    get().dispatch({ type: "POST_CREATED", post });
   },
 
   toggleLike: async (postId) => {
@@ -125,6 +133,15 @@ export const useFeedStore = create<FeedStore>((set, get) => ({
     try {
       const [suggestedUsers, trends] = await Promise.all([fetchSuggestedUsers(), fetchTrends()]);
       get().dispatch({ type: "SIDEBAR_LOADED", suggestedUsers, trends });
+    } catch (error) {
+      get().dispatch({ type: "FEED_FAILED", error: errorMessage(error) });
+    }
+  },
+
+  toggleFollow: async (userId) => {
+    try {
+      const user = await followUser(userId);
+      get().dispatch({ type: "USER_UPDATED", user });
     } catch (error) {
       get().dispatch({ type: "FEED_FAILED", error: errorMessage(error) });
     }

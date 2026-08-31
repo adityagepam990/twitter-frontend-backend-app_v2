@@ -1,0 +1,75 @@
+@use "../../styles/tokens" as *;
+
+.compose {
+  display: flex;
+  gap: $space-3;
+  padding: $space-4;
+  border-bottom: 1px solid $color-border;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea {
+  resize: none;
+  overflow: hidden;
+  border: none;
+  background: none;
+  color: $color-text-primary;
+  font-family: $font-family-base;
+  font-size: $font-size-lg;
+  min-height: $space-6;
+  padding: $space-2 0;
+
+  &::placeholder {
+    color: $color-text-secondary;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.error {
+  color: $color-like-red;
+  font-size: $font-size-sm;
+  margin: 0 0 $space-2;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $space-3;
+  border-top: 1px solid $color-border;
+  padding-top: $space-3;
+}
+
+.count {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+}
+
+.warning {
+  color: $color-like-red;
+}
+
+.postButton {
+  border: none;
+  border-radius: $radius-full;
+  background: $color-brand-blue;
+  color: $color-text-primary;
+  font-weight: 700;
+  font-size: $font-size-sm;
+  padding: $space-2 $space-4;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
