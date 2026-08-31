@@ -58,10 +58,10 @@ export function LeftSidebar() {
       </button>
 
       <div className={styles.account}>
-        <Avatar src="" displayName="Pulse User" size="md" />
+        <Avatar displayName="Aditya" size="md" />
         <div className={styles.accountInfo}>
-          <span className={styles.accountName}>Pulse User</span>
-          <span className={styles.accountHandle}>@pulseuser</span>
+          <span className={styles.accountName}>Aditya</span>
+          <span className={styles.accountHandle}>@aditya</span>
         </div>
       </div>
     </div>

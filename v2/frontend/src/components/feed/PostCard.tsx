@@ -29,12 +29,12 @@ function formatRelativeTime(createdAt: string): string {
 export function PostCard({ post }: PostCardProps) {
   return (
     <article className={styles.card}>
-      <Avatar src={post.author_avatar_url} displayName={post.author_name} size="md" />
+      <Avatar displayName={post.author_name} size="md" />
 
       <div className={styles.body}>
         <header className={styles.header}>
           <span className={styles.authorName}>{post.author_name}</span>
-          <span className={styles.authorHandle}>@{post.author_handle}</span>
+          <span className={styles.authorHandle}>{post.author_handle}</span>
           <span className={styles.dot}>·</span>
           <span className={styles.timestamp}>{formatRelativeTime(post.created_at)}</span>
         </header>

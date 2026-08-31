@@ -3,7 +3,7 @@ from backend.models.user_model import User
 
 def get_seed_users() -> list[User]:
     return [
-        User(id="u1", display_name="Maya Chen", handle="@mayachen", avatar_url="https://i.pravatar.cc/150?img=1", followed=True),
+        User(id="u1", display_name="Aditya", handle="@aditya", avatar_url="https://i.pravatar.cc/150?img=1", followed=True),
         User(id="u2", display_name="Jordan Blake", handle="@jblake", avatar_url="https://i.pravatar.cc/150?img=2", followed=True),
         User(id="u3", display_name="Priya Nair", handle="@priyanair", avatar_url="https://i.pravatar.cc/150?img=3", followed=True),
         User(id="u4", display_name="Sam Okafor", handle="@samokafor", avatar_url="https://i.pravatar.cc/150?img=4", followed=True),

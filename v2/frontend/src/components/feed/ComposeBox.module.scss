@@ -43,10 +43,33 @@
 .footer {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: $space-3;
+  justify-content: space-between;
   border-top: 1px solid $color-border;
   padding-top: $space-3;
+}
+
+.attachments {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.attachmentIcon {
+  display: flex;
+  align-items: center;
+  color: $color-brand-blue;
+  cursor: pointer;
+}
+
+.icon {
+  width: $space-5;
+  height: $space-5;
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
 }
 
 .count {

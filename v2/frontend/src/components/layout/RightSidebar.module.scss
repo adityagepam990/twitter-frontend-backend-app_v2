@@ -37,38 +37,22 @@
   margin: 0;
 }
 
-.skeletonRow {
-  display: flex;
-  align-items: center;
-  gap: $space-3;
+.cardDescription {
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  margin: 0;
 }
 
-.skeletonLine {
-  height: $space-3;
-  border-radius: $radius-sm;
-  background: $color-surface-hover;
-  flex: 1;
-}
-
-.skeletonLineShort {
-  height: $space-3;
-  width: 60%;
-  border-radius: $radius-sm;
-  background: $color-surface-hover;
-}
-
-.skeletonButton {
-  height: $space-6;
+.premiumButton {
+  align-self: flex-start;
+  border: none;
   border-radius: $radius-full;
-  background: $color-surface-hover;
-}
-
-.skeletonAvatar {
-  width: $space-6;
-  height: $space-6;
-  border-radius: $radius-full;
-  background: $color-surface-hover;
-  flex-shrink: 0;
+  background: $color-brand-blue;
+  color: $color-text-primary;
+  font-weight: 700;
+  font-size: $font-size-sm;
+  padding: $space-2 $space-4;
+  cursor: pointer;
 }
 
 .trendRow {

@@ -1,9 +1,6 @@
-import { useState } from "react";
-
 import styles from "./Avatar.module.scss";
 
 interface AvatarProps {
-  src: string;
   displayName: string;
   size?: "sm" | "md" | "lg";
 }
@@ -18,23 +15,10 @@ function getInitials(displayName: string): string {
   return `${first}${last}`.toUpperCase();
 }
 
-export function Avatar({ src, displayName, size = "md" }: AvatarProps) {
-  const [failed, setFailed] = useState(false);
-
-  if (failed) {
-    return (
-      <div className={`${styles.avatar} ${styles[size]}`} role="img" aria-label={displayName}>
-        {getInitials(displayName)}
-      </div>
-    );
-  }
-
+export function Avatar({ displayName, size = "md" }: AvatarProps) {
   return (
-    <img
-      className={`${styles.avatar} ${styles[size]}`}
-      src={src}
-      alt={displayName}
-      onError={() => setFailed(true)}
-    />
+    <div className={`${styles.avatar} ${styles[size]}`} role="img" aria-label={displayName}>
+      {getInitials(displayName)}
+    </div>
   );
 }

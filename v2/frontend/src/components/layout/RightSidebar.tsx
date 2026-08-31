@@ -20,9 +20,12 @@ export function RightSidebar() {
 
       <section className={styles.card}>
         <h2 className={styles.cardTitle}>Subscribe to Premium</h2>
-        <div className={styles.skeletonLine} />
-        <div className={styles.skeletonLine} />
-        <div className={styles.skeletonButton} />
+        <p className={styles.cardDescription}>
+          Subscribe to unlock new features and, if eligible, receive a share of revenue.
+        </p>
+        <button type="button" className={styles.premiumButton}>
+          Subscribe to Premium at ₹799/month
+        </button>
       </section>
 
       <section className={styles.card}>
@@ -40,10 +43,10 @@ export function RightSidebar() {
         <h2 className={styles.cardTitle}>Who to follow</h2>
         {suggestedUsers.map((user) => (
           <div key={user.id} className={styles.userRow}>
-            <Avatar src={user.avatar_url} displayName={user.display_name} size="md" />
+            <Avatar displayName={user.display_name} size="md" />
             <div className={styles.userInfo}>
               <span className={styles.userName}>{user.display_name}</span>
-              <span className={styles.userHandle}>@{user.handle}</span>
+              <span className={styles.userHandle}>{user.handle}</span>
             </div>
             <FollowButton userId={user.id} followed={user.followed} />
           </div>

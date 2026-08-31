@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import type { ChangeEvent } from "react";
+import { Gift, Image, ListOrdered } from "lucide-react";
 
 import type { ApiError } from "../../api/client";
 import { useFeedStore } from "../../store/feed_store";
@@ -57,7 +58,7 @@ export function ComposeBox() {
 
   return (
     <div className={styles.compose}>
-      <Avatar src="" displayName="Pulse User" size="md" />
+      <Avatar displayName="Aditya" size="md" />
 
       <div className={styles.body}>
         <textarea
@@ -72,17 +73,31 @@ export function ComposeBox() {
         {error && <p className={styles.error}>{error}</p>}
 
         <div className={styles.footer}>
-          <span className={count >= WARNING_THRESHOLD ? `${styles.count} ${styles.warning}` : styles.count}>
-            {count}/{MAX_LENGTH}
-          </span>
-          <button
-            type="button"
-            className={styles.postButton}
-            disabled={isEmpty || isOverLimit || isSubmitting}
-            onClick={() => void handleSubmit()}
-          >
-            Post
-          </button>
+          <div className={styles.attachments}>
+            <span className={styles.attachmentIcon}>
+              <Image className={styles.icon} />
+            </span>
+            <span className={styles.attachmentIcon}>
+              <Gift className={styles.icon} />
+            </span>
+            <span className={styles.attachmentIcon}>
+              <ListOrdered className={styles.icon} />
+            </span>
+          </div>
+
+          <div className={styles.submit}>
+            <span className={count >= WARNING_THRESHOLD ? `${styles.count} ${styles.warning}` : styles.count}>
+              {count}/{MAX_LENGTH}
+            </span>
+            <button
+              type="button"
+              className={styles.postButton}
+              disabled={isEmpty || isOverLimit || isSubmitting}
+              onClick={() => void handleSubmit()}
+            >
+              Post
+            </button>
+          </div>
         </div>
       </div>
     </div>
